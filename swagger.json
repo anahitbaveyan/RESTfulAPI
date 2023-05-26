@@ -131,7 +131,7 @@
         }
       }
     },
-    "/api/v1/authenticated/authenticated-user": {
+    "/api/v1/authenticated-user": {
       "get": {
         "summary": "Get authenticated user",
         "tags": [
