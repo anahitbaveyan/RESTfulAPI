@@ -25,6 +25,22 @@ class AuthService {
   static async findUserByEmail(email) {
     return await User.findOne({ where: { email } });
   }
+
+  static async authenticateUser(email, password) {
+    const user = await this.findUserByEmail(email);
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    const isPasswordValid = await this.comparePasswords(password, user.password);
+
+    if (!isPasswordValid) {
+      throw new Error('Incorrect password');
+    }
+
+    return user;
+  }
 }
 
 module.exports = AuthService;
