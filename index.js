@@ -4,12 +4,13 @@ const express = require('express')
 const sequelize = require('./database')
 const app = express();
 const authRoutes = require('./routes/authRoutes');
-
+const authenticatedRoutes = require('./routes/authenticatedRoutes');
 
 
 
 app.use(express.json());
 app.use('/api/v1', authRoutes);
+app.use('/api/v1/authenticated', authenticatedRoutes);
 
 
 const port = process.env.PORT || 7000;
