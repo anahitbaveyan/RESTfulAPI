@@ -19,8 +19,4 @@ const User = sequelize.define('User', {
   },
 });
 
-// User.prototype.comparePassword = async function (password) {
-//   return bcrypt.compare(password, this.password);
-// };
-
 module.exports = User;
