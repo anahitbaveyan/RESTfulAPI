@@ -21,6 +21,10 @@ class AuthService {
     const hashedPassword = await this.hashPassword(password);
     return await User.create({ username, email, password: hashedPassword });
   }
+
+  static async findUserByEmail(email) {
+    return await User.findOne({ where: { email } });
+  }
 }
 
 module.exports = AuthService;

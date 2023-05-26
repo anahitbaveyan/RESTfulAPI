@@ -22,7 +22,7 @@ class AuthController {
   static async login(req, res) {
     try {
       const { email, password } = req.body;
-      const user = await User.findOne({ where: { email } });
+      const user = await AuthService.findUserByEmail(email);
 
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
