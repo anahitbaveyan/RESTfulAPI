@@ -1,0 +1,175 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "RestFulAPI Documentation"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7000",
+      "description": "Development server"
+    }
+  ],
+  "paths": {
+    "/api/v1/register": {
+      "post": {
+        "summary": "Register a new user",
+        "tags": [
+          "Authentication"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "User registered successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "id": 1,
+                    "username": "johnDoe",
+                    "email": "john@example.com"
+                  }
+                }
+              },
+              "example": {
+                "message": "User registered successfully",
+                "user": {
+                  "id": 1,
+                  "username": "johnDoe",
+                  "email": "john@example.com"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "User already exists",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "error": "User already exists"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "error": "Internal server error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/login": {
+      "post": {
+        "summary": "User login",
+        "tags": [
+          "Authentication"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "User logged in successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "token": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "message": "User logged in successfully",
+                "token": "YOUR_AUTH_TOKEN"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication failed",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "error": "Authentication failed"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/authenticated/authenticated-user": {
+      "get": {
+        "summary": "Get authenticated user",
+        "tags": [
+          "Authentication"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Authentication successful",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "username": "johnDoe",
+                    "email": "john@example.com"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+                
